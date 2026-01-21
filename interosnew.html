@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interos | Global Supply Chain Resilience</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --blue: #0d1849;
+            --blue-dark: #070e2b;
+            --orange: #ff4500;
+            --accent: #e9ecf5;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            color: #111;
+            background-color: #fff;
+        }
+
+        /* ================= HERO SECTION ================= */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: var(--blue);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-video-wrapper {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 65%;
+            height: 100%;
+            z-index: 1;
+            mask-image: linear-gradient(to left, black 60%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to left, black 60%, transparent 100%);
+        }
+
+        .hero-video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .navbar {
+            position: relative;
+            z-index: 10;
+            padding: 30px 0;
+        }
+
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 15px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover { color: var(--orange) !important; }
+
+        .btn-cta-nav {
+            border: 2px solid white;
+            color: white;
+            border-radius: 50px;
+            padding: 10px 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-cta-nav:hover { background: white; color: var(--blue); }
+
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        /* Entrance Animation for Title */
+        .hero-title {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-btn {
+            border: 2px solid white;
+            color: white;
+            border-radius: 50px;
+            padding: 14px 40px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .hero-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
+        }
+
+        /* ================= SUPPLY CHAIN TEXT SECTION ================= */
+        .invisible-section {
+            padding: 140px 0;
+            background: #fff;
+        }
+
+        .invisible-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: var(--blue);
+            line-height: 1.1;
+        }
+
+        .invisible-text {
+            font-size: 1.25rem;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* ================= STATS SECTION ================= */
+        .stats-section {
+            padding: 100px 0;
+            background: #fff;
+        }
+
+        .stat-ring {
+            width: 185px;
+            height: 185px;
+            border: 3px solid #ff0000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            transition: var(--transition);
+        }
+
+        /* Hover Effect for Stats */
+        .stat-card:hover .stat-ring {
+            transform: scale(1.05);
+            background: rgba(255, 0, 0, 0.05);
+        }
+
+        .stat-value {
+            font-size: 5.5rem;
+            font-weight: 800;
+            color: var(--blue);
+            letter-spacing: -3px;
+            line-height: 0.9;
+        }
+
+        .stat-label {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--blue);
+            margin-top: 15px;
+        }
+
+        .stat-quote {
+            font-size: 1.05rem;
+            color: #111;
+            line-height: 1.5;
+            max-width: 340px;
+            margin: 20px auto 0;
+            text-align: left;
+        }
+
+        .stat-attribution {
+            display: block;
+            margin-top: 10px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        /* ================= PROFESSIONAL FOOTER ================= */
+        .footer-wrapper {
+            background-color: var(--blue);
+            color: #fff;
+            padding: 120px 0 80px;
+            position: relative;
+        }
+
+        /* Index Bars (Left side markers) */
+        .index-bar {
+            position: absolute;
+            left: 5%;
+            width: 8px;
+            height: 60px;
+            background: var(--orange);
+            border-radius: 2px;
+        }
+        .index-top { top: 60px; }
+        .index-bottom { bottom: 60px; }
+
+        .footer-col-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .footer-nav {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-nav li { margin-bottom: 14px; }
+
+        .footer-nav a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        /* Color Transition and Hover Animation */
+        .footer-nav a:hover {
+            color: var(--orange);
+            transform: translateX(10px);
+        }
+
+        .footer-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 80px 0 40px;
+        }
+
+        @media (max-width: 991px) {
+            .hero-video-wrapper { width: 100%; opacity: 0.25; }
+            .index-bar { display: none; }
+            .invisible-inner { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-video-wrapper">
+            <video autoplay loop muted playsinline>
+                <source src="https://www.interos.ai/wp-content/uploads/2025/01/interos-cut-3.5.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="https://www.interos.ai/wp-content/themes/interos/images/interos-logo.svg" height="35" alt="Interos">
+                </a>
+                <div class="collapse navbar-collapse justify-content-end">
+                    <ul class="navbar-nav align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="#">Why Interos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Solutions</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Company</a></li>
+                        <li class="nav-item ms-lg-3"><a class="btn-cta-nav" href="#">Request Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="hero-title">See Everything.<br>Do Everything.</h1>
+                <a href="#visibility" class="hero-btn">Start Today <i class="bi bi-arrow-right ms-2"></i></a>
+                
+                <div class="mt-5 pt-4 opacity-75">
+                    <small class="text-uppercase fw-bold d-block mb-1" style="letter-spacing: 1px;">Featured Report</small>
+                    <p>Resilience 2023: Interos Annual Global <br> Supply Chain Survey</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="visibility" class="invisible-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <h2 class="invisible-title">Supply Chains Shouldn't Be Invisible</h2>
+                </div>
+                <div class="col-lg-6 offset-lg-1">
+                    <div class="invisible-text">
+                        <p class="mb-4">With limited resources and time, businesses only understand and monitor 2% of their supply chain, leaving them exposed to turmoil, attacks, and gaps across the other 98%.</p>
+                        <p class="mb-4">These opaque and unknowable networks worsen disruptions that cost $2.5 trillion in annual losses.</p>
+                        <p class="mb-4">They devastate brand, reputation and profitability.</p>
+                        <p class="fw-bold text-dark">Don’t let them.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container">
+            <h3 class="text-center mb-5" style="color: var(--blue); font-weight: 800; font-size: 2.8rem;">The High Cost Of A Shock-Prone World</h3>
+            
+            <div class="row text-center gy-5 mt-4">
+                <div class="col-md-4 stat-card">
+                    <div class="stat-ring">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><line x1="12" y1="2" x2="12" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    </div>
+                    <div class="stat-value">$142B</div>
+                    <div class="stat-label">Extreme Weather / US</div>
+                    <div class="stat-quote">
+                        “We’re talking big money here and it’s consistent. We need to think about how to better mitigate future damages.”
+                        <span class="stat-attribution">— Adam Smith, NOAA</span>
+                    </div>
+                </div>
+
+                <div class="col-md-4 stat-card">
+                    <div class="stat-ring">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </div>
+                    <div class="stat-value">12T</div>
+                    <div class="stat-label">Cyber-Attacks / Global</div>
+                    <div class="stat-quote">
+                        “We need to ensure that we are building and defending a secure and resilient cyber ecosystem.”
+                        <span class="stat-attribution">— Jen Easterly, CISA</span>
+                    </div>
+                </div>
+
+                <div class="col-md-4 stat-card">
+                    <div class="stat-ring">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                    </div>
+                    <div class="stat-value">$15T</div>
+                    <div class="stat-label">Geopolitical Shocks</div>
+                    <div class="stat-quote">
+                        "Organizations that take a serious approach to political risk management are likely to recover better.”
+                        <span class="stat-attribution">— Condoleezza Rice</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5 pt-4">
+                <a href="#" class="btn btn-primary rounded-pill px-5 py-3 fw-bold" style="background: var(--blue); border: none;">Read Our Global Supply Chain Report &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-wrapper">
+        <div class="index-bar index-top"></div>
+        <div class="index-bar index-bottom"></div>
+
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12"><img src="https://www.interos.ai/wp-content/themes/interos/images/interos-footer-logo.svg" width="180"></div>
+            </div>
+
+            <div class="row gy-5">
+                <div class="col-6 col-md-4 col-lg-2">
+                    <h5 class="footer-col-title">Our Software</h5>
+                    <ul class="footer-nav">
+                        <li><a href="#">The Technology</a></li>
+                        <li><a href="#">Request Contact</a></li>
+                        <li><a href="#">Look Up A Supplier</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <h5 class="footer-col-title">Solutions</h5>
+                    <ul class="footer-nav">
+                        <li><a href="#">Overview</a></li>
+                        <li><a href="#">Procurement</a></li>
+                        <li><a href="#">Resilience</a></li>
+                        <li><a href="#">Compliance</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <h5 class="footer-col-title">Industries</h5>
+                    <ul class="footer-nav">
+                        <li><a href="#">Financial Services</a></li>
+                        <li><a href="#">Airlines</a></li>
+                        <li><a href="#">Federal Government</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <h5 class="footer-col-title">Company</h5>
+                    <ul class="footer-nav">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <h5 class="footer-col-title">Insights</h5>
+                    <ul class="footer-nav">
+                        <li><a href="#">The Interos Blog</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <h5 class="footer-col-title">Privacy</h5>
+                    <ul class="footer-nav">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+            <p class="text-center text-white-50 small mb-0">&copy; 2026 Interos AI. Designed for Excellence.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
